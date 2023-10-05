@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Crop and Create Image for print</title>
+  <!-- <link rel="stylesheet" href="vendors/bootstrap/5.3.1/bootstrap.min.css"> -->
+  <link rel="stylesheet" href="vendors/cropper/1.6.0/cropper.min.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
+  <link rel="stylesheet" href="style.css">
+  <link rel="manifest" href="manifest.json">
+
+</head>
+
+<body>
+  <header>
+    <h2>Crop and create image</h2> <button id="install-button">Instll</button>
+  </header>
+
+  <main>
+    <!-- crop image -->
+    <input type="file" name="imageInput" id="imageInput" accept="image/*" />
+    <div id="cropImageWrapper">
+      <img id="imageForCrop" src="select_picture.png" />
+    </div>
+
+    <br />
+
+    <div id="cropGroup">
+      <button title="Crop Image" id="cropButton" style="padding:3px 5px 1px;">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 500" style="width: 20px;">
+          <path
+            d="M448 109.3l54.6-54.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L402.7 64 160 64v64l178.7 0L128 338.7V32c0-17.7-14.3-32-32-32S64 14.3 64 32V64H32C14.3 64 0 78.3 0 96s14.3 32 32 32H64V384c0 35.3 28.7 64 64 64H352V384H173.3L384 173.3 384 480c0 17.7 14.3 32 32 32s32-14.3 32-32V448h32c17.7 0 32-14.3 32-32s-14.3-32-32-32H448l0-274.7z" />
+        </svg>
+      </button>
+
+      <button title="Flip Horizontally" id="flipHorizontallyButton" style="align-items: center; padding:0px 5px 1px;">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="#444" style="width: 20px;" viewBox="10 0 500 400">
+          <path
+            d="M406.6 374.6l96-96c12.5-12.5 12.5-32.8 0-45.3l-96-96c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L402.7 224l-293.5 0 41.4-41.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-96 96c-12.5 12.5-12.5 32.8 0 45.3l96 96c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 288l293.5 0-41.4 41.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0z" />
+        </svg>
+      </button>
+      <button title="Flip Vertically" id="flipVerticallyButton" style="align-items: center; padding:3px 5px 1px;">
+        <svg style="height: 20px;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
+          <path
+            d="M182.6 9.4c-12.5-12.5-32.8-12.5-45.3 0l-96 96c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L128 109.3V402.7L86.6 361.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l96 96c12.5 12.5 32.8 12.5 45.3 0l96-96c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 402.7V109.3l41.4 41.4c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-96-96z" />
+        </svg>
+      </button>
+
+      <button id="resetAllButton">Reset All</button>
+
+      <button style="padding:2px;" id="resetRotateButton" disabled>
+        Reset Rotate
+      </button>
+
+
+      <!-- slider -->
+      <div>
+        <input type="range" name="imageRotateSlider" id="imageRotateSlider" min="-90" max="90" value="0" step="0.001">
+        <datalist id="values">
+          <option value="-90" label="-90"></option>
+          <option value="-75" label="-75"></option>
+          <option value="-60" label="-60"></option>
+          <option value="-45" label="-45"></option>
+          <option value="-30" label="-30"></option>
+          <option value="-15" label="-15"></option>
+          <option value="0" label="0"></option>
+          <option value="15" label="15"></option>
+          <option value="30" label="30"></option>
+          <option value="45" label="45"></option>
+          <option value="60" label="60"></option>
+          <option value="75" label="75"></option>
+          <option value="90" label="90"></option>
+        </datalist>
+      </div>
+    </div>
+
+    <!-- canvas grid -->
+
+    <div id="canvasToolGroup">
+      <button id="reCropButton">Re-Crop Image</button>
+      <select name="colsSelect" id="colsSelect">
+        <option value="1">One Col</option>
+        <option value="2">Two Cols</option>
+        <option value="3">Three Cols</option>
+        <option value="4">Four Cols</option>
+        <option value="5">Five Cols</option>
+        <option selected value="6">Six Cols</option>
+        <option value="7">Seven Cols</option>
+        <option value="8">Eight Cols</option>
+        <option value="9">Nine Cols</option>
+        <option value="10">Ten Cols</option>
+      </select>
+
+      <select name="rowsSelect" id="rowsSelect">
+        <option selected value="1">One Row</option>
+        <option value="2">Two Rows</option>
+        <option value="3">Three Rows</option>
+        <option value="4">Four Rows</option>
+        <option value="5">Five Rows</option>
+        <option value="6">Six Rows</option>
+        <option value="7">Seven Rows</option>
+        <option value="8">Eight Rows</option>
+        <option value="9">Nine Rows</option>
+        <option value="10">Ten Rows</option>
+      </select>
+
+      <input type="color" value="#008080" id="backgroundColorInput" />
+
+      <select name="paperSelect" id="paperSelect">
+        <option value="A4" selected>A4</option>
+        <option value="_4x6">4x6</option>
+        <option value="_5x7">5x7</option>
+      </select>
+
+      <label style="border: thin solid gray; padding: 2px;" for="isLandscape"><input type="checkbox" name="isLandscape"
+          id="isLandscape">&nbsp;Landscape</label>
+
+      <button id="downloadImageButton">Download Image</button>
+    </div>
+    <br>
+    <canvas id="outputCanvas">Your browser doesn't support.</canvas>
+  </main>
+
+  <footer>&copy; Copyright <a href="http://skwebs.github.io">SK Webs</a>
+    <script>document.write(new Date().getFullYear())</script>
+  </footer>
+
+  <script src="vendors/cropper/1.6.0/cropper.min.js"></script>
+  <script src="main.js"></script>
+  <script src="pwa.js"></script>
+</body>
+
+</html>

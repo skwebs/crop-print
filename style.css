@@ -1,0 +1,93 @@
+@font-face {
+  font-family: "Roboto";
+  font-weight: 400;
+  font-display: swap;
+  src: url(fonts/Roboto/Roboto-Regular.ttf) format("ttf");
+}
+/* @font-face {
+  font-family: "Roboto";
+  font-style: italic;
+  font-weight: 300;
+  font-display: swap;
+  src: url(fonts/Roboto/Roboto-LightItalic.ttf) format("ttf");
+} */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Roboto", sans-serif;
+}
+
+body {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: azure;
+  position: relative;
+}
+
+header,
+footer {
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  flex: 0 0 auto;
+  background-color: aliceblue;
+}
+
+main {
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  flex: 1 0 auto;
+}
+
+img {
+  width: 100%;
+  border: 1px solid gray;
+  display: block;
+}
+
+#cropImageWrapper {
+  width: 360px;
+  height: 450px;
+  display: none;
+  visibility: hidden;
+  margin-top: 15px;
+}
+
+#imageRotateSlider {
+  min-width: 360px;
+}
+
+datalist {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  writing-mode: vertical-lr;
+  min-width: 360px;
+}
+
+#outputCanvas {
+  width: 100%;
+  box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.1);
+  display: none;
+}
+
+input,
+button {
+  margin-top: 10px;
+}
+
+input[type="range"] {
+  cursor: pointer;
+}
+
+#cropGroup,
+#canvasToolGroup {
+  display: none;
+}

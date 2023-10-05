@@ -1,0 +1,15 @@
+{
+  "name": "Crop & Create Passport Size Photo",
+  "short_name": "Crop & Create",
+  "start_url": "./",
+  "description": "Upload and create passport size photo album.",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#000000",
+  "icons": [
+    {
+      "src": "192x192.svg",
+      "sizes": "any"
+    }
+  ]
+}
