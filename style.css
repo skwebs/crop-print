@@ -87,7 +87,31 @@ input[type="range"] {
   cursor: pointer;
 }
 
+
+/* added */
+.custom-range {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none; 
+}
+.custom-range::-webkit-slider-runnable-track{
+  height: 0.5rem;
+  cursor: pointer;
+  background-color: #dcdcdc;
+  border-radius: 1rem;
+  display: block;
+}
+.custom-range::-webkit-slider-thumb{
+  width: 1rem;
+  height: 1rem;
+  margin-top: -0.25rem;
+}
+
 #cropGroup,
 #canvasToolGroup {
   display: none;
+}
+
+#install-button{
+  padding:5px 10px ;
 }
